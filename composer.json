@@ -16,7 +16,6 @@
     "require": {
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.0",
-        "psr/event-dispatcher": "^1.0",
         "symfony/http-client": "^7.4"
     },
     "require-dev": {
