@@ -23,20 +23,16 @@ class ZfinderApiClient
 {
     private HttpClientInterface $client;
 
-    private string $baseUrl;
-
     /**
      * @var string[]
      */
     private array $additionalHeaders;
 
     public function __construct(
-        string $federalState,
+        private readonly string $baseUrl,
         string $apiKey,
     ) {
         $this->client = HttpClient::create();
-
-        $this->baseUrl = $this->getBaseUrl($federalState);
 
         $this->additionalHeaders = [
             sprintf('api_key: %s', $apiKey),
@@ -165,34 +161,6 @@ class ZfinderApiClient
         }
 
         return new OnlineServiceResult($response);
-    }
-
-    /**
-     * @throws \LogicException
-     */
-    public function getBaseUrl(string $federalStateAbbreviation): string
-    {
-        if (!\array_key_exists($federalStateAbbreviation, self::getSupportedFederalStates())) {
-            throw new \LogicException(sprintf('No endpoint matching for "%s" in %s', $federalStateAbbreviation, __METHOD__));
-        }
-
-        return self::getSupportedFederalStates()[$federalStateAbbreviation];
-    }
-
-    /**
-     * @return string[]
-     */
-    public static function getSupportedFederalStates(): array
-    {
-        return [
-            'SH' => 'https://restapi-v4-sh.infodienste.de/',
-            'HE' => 'https://restapi-v4-he.infodienste.de/',
-            'MV' => 'https://restapi-v4-mv.infodienste.de/',
-            'NI' => 'https://restapi-v4-ni.infodienste.de/',
-            'RP' => 'https://restapi-v4-rp.infodienste.de/',
-            'ST' => 'https://restapi-v4-st.infodienste.de/',
-            'TH' => 'https://restapi-v4-th.infodienste.de/',
-        ];
     }
 
     /**
