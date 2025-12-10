@@ -9,7 +9,7 @@ namespace Hardanders\ZfinderApiClient\ValueObject;
  *
  * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#PublicServiceType
  */
-class PublicServiceType
+readonly class PublicServiceType
 {
     /** @var string Id des Objektes */
     public string $id;
@@ -53,7 +53,7 @@ class PublicServiceType
     /** @var NamedReference[] Leistungen */
     public array $relatedPublicServiceTypes;
 
-    public ?bool $writtenFormRequired = false;
+    public ?bool $writtenFormRequired;
 
     public ?Type $trustLevel;
 
@@ -73,12 +73,6 @@ class PublicServiceType
     public array $furtherPstObjectsWithActivityAndDetail;
 
     public ?NamedReference $department;
-
-    /** @var Form[] HELPER Property */
-    public array $forms = [];
-
-    /** @var OnlineService[] */
-    public array $onlineServices = [];
 
     public function __construct(\stdClass $object)
     {
