@@ -4,18 +4,27 @@ declare(strict_types=1);
 
 namespace Hardanders\ZfinderApiClient\ValueObject;
 
+/**
+ * Formular.
+ *
+ * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#Form
+ */
 readonly class Form
 {
+    /** @var string Id des Objektes */
     public string $id;
 
+    /** @var string Bezeichnung */
     public string $name;
 
+    /** @var string Beschreibung */
     public string $description;
 
     /** @var FormLink[] Downloadlinks zu den Formularen */
     public array $links;
 
-    public \DateTimeInterface $lastUpdated;
+    /** @var \DateTimeImmutable Letzte Aktualisierung des Objektes. */
+    public \DateTimeImmutable $lastUpdated;
 
     /** @var NamedReference[] Leistungen */
     public array $publicServiceTypes;
@@ -23,6 +32,7 @@ readonly class Form
     /** @var NamedReference[] Organisationseinheiten */
     public array $organisationalUnits;
 
+    /** @var bool lokales Formular */
     public bool $localForm;
 
     public function __construct(\stdClass $object)

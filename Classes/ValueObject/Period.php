@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Hardanders\ZfinderApiClient\ValueObject;
 
+/**
+ * Frist.
+ *
+ * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#Period
+ */
 readonly class Period
 {
     /** @var string Fristart (Zeitraum, variabler Zeitraum, fester Datumsbereich) */
@@ -18,11 +23,11 @@ readonly class Period
     /** @var string Bemerkung */
     public string $note;
 
-    /** @var \DateTimeInterface|null gültig von */
-    public ?\DateTimeInterface $validFrom;
+    /** @var \DateTimeImmutable|null gültig von */
+    public ?\DateTimeImmutable $validFrom;
 
-    /** @var \DateTimeInterface|null gültig bis */
-    public ?\DateTimeInterface $validTo;
+    /** @var \DateTimeImmutable|null gültig bis */
+    public ?\DateTimeImmutable $validTo;
 
     /** @var int|null Zeitraum, gefüllt wenn Typ SPAN, SPANINTERVAL */
     public ?int $timeSpan;
@@ -33,11 +38,11 @@ readonly class Period
     /** @var string Zeitraumeinheit, gefüllt wenn Typ SPAN, SPANINTERVAL */
     public string $periodUnit;
 
-    /** @var \DateTimeInterface|null Datum von, gefüllt wenn Typ DATEINTERVAL */
-    public ?\DateTimeInterface $dateFrom;
+    /** @var \DateTimeImmutable|null Datum von, gefüllt wenn Typ DATEINTERVAL */
+    public ?\DateTimeImmutable $dateFrom;
 
-    /** @var \DateTimeInterface|null Datum bis, gefüllt wenn Typ DATEINTERVAL */
-    public ?\DateTimeInterface $dateTo;
+    /** @var \DateTimeImmutable|null Datum bis, gefüllt wenn Typ DATEINTERVAL */
+    public ?\DateTimeImmutable $dateTo;
 
     /** @var string Wiederholung des Datumsbereiches, gefüllt wenn Typ SPAN, SPANINTERVAL */
     public string $PeriodRepetition;
@@ -48,13 +53,13 @@ readonly class Period
         $this->restrictedArea = $object->restrictedArea ?? '';
         $this->name = $object->name;
         $this->note = $object->note ?? '';
-        $this->validFrom = property_exists($object, 'validFrom') ? new \DateTime($object->validFrom) : null;
-        $this->validTo = property_exists($object, 'validTo') ? new \DateTime($object->validTo) : null;
+        $this->validFrom = property_exists($object, 'validFrom') ? new \DateTimeImmutable($object->validFrom) : null;
+        $this->validTo = property_exists($object, 'validTo') ? new \DateTimeImmutable($object->validTo) : null;
         $this->timeSpan = $object->timeSpan;
         $this->timeSpanTo = $object->timeSpanTo ?? null;
         $this->periodUnit = $object->periodUnit;
-        $this->dateFrom = property_exists($object, 'dateFrom') ? new \DateTime($object->dateFrom) : null;
-        $this->dateTo = property_exists($object, 'dateTo') ? new \DateTime($object->dateTo) : null;
+        $this->dateFrom = property_exists($object, 'dateFrom') ? new \DateTimeImmutable($object->dateFrom) : null;
+        $this->dateTo = property_exists($object, 'dateTo') ? new \DateTimeImmutable($object->dateTo) : null;
         $this->PeriodRepetition = $object->PeriodRepetition ?? '';
     }
 }

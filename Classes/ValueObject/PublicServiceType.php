@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Hardanders\ZfinderApiClient\ValueObject;
 
 /**
- * todo: set all properties
- * https://restapi-v4-rp.infodienste.de/doc/index.html#PublicServiceType.
+ * Leistung.
+ *
+ * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#PublicServiceType
  */
-#[\AllowDynamicProperties]
 class PublicServiceType
 {
     /** @var string Id des Objektes */
@@ -35,17 +35,17 @@ class PublicServiceType
     /** @var ServicePeriod[] Bearbeitungsfristen */
     public array $servicePeriods;
 
-    //    todo array of https://restapi-v4-rp.infodienste.de/doc/index.html#Charge
-    //    public array $charges;
+    /** @var Charge[] Gebühren */
+    public array $charges;
 
-    //    todo array of https://restapi-v4-rp.infodienste.de/doc/index.html#Document
-    //    public array $documents;
+    /** @var Document[] Dokumente */
+    public array $documents;
 
     /** @var string[] */
     public array $synonyms;
 
-    /** @var \DateTimeInterface Letzte Aktualisierung des Objektes. */
-    public \DateTimeInterface $lastUpdated;
+    /** @var \DateTimeImmutable Letzte Aktualisierung des Objektes. */
+    public \DateTimeImmutable $lastUpdated;
 
     /** @var NamedReference[] Gebietseinschränkungen der Leistung */
     public array $restrictedAreas;
@@ -90,7 +90,9 @@ class PublicServiceType
         $this->textBlocks = array_map(fn (\stdClass $textBlock) => new TextBlock($textBlock), $object->textBlocks);
         $this->periods = array_map(fn (\stdClass $period) => new Period($period), $object->periods);
         $this->servicePeriods = array_map(fn (\stdClass $servicePeriod) => new ServicePeriod($servicePeriod), $object->servicePeriods);
-        $this->synonyms = $object->synonyms;
+        $this->charges = array_map(fn (\stdClass $charge) => new Charge($charge), $object->charges);
+        $this->documents = array_map(fn (\stdClass $document) => new Document($document), $object->documents);
+        $this->synonyms = $object->synonyms ?? [];
         $this->lastUpdated = new \DateTimeImmutable($object->lastUpdated);
         $this->restrictedAreas = array_map(fn (\stdClass $restrictedArea) => new NamedReference($restrictedArea), $object->restrictedAreas);
         $this->writtenFormRequired = $object->writtenFormRequired ?? null;

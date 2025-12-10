@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Hardanders\ZfinderApiClient\ValueObject;
 
 /**
- * @object-type DTO
+ * Zuständigkeit einer Organisationseinhet.
+ *
+ * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#OuCompetence
  */
 readonly class OuCompetence
 {

@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Hardanders\ZfinderApiClient\ValueObject;
 
+/**
+ * Link zum Formular um diese heruntertzuladen/anzuzeigen.
+ *
+ * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#FormLink
+ */
 readonly class FormLink
 {
     public Type $type;

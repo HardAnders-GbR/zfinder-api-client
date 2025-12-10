@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Hardanders\ZfinderApiClient\ValueObject;
 
+/**
+ * Bearbeitungsdauer.
+ *
+ * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#ServicePeriod
+ */
 readonly class ServicePeriod
 {
     /** @var string Fristart (Zeitraum, variabler Zeitraum, fester Datumsbereich) */
@@ -18,11 +23,11 @@ readonly class ServicePeriod
     /** @var string Bemerkung */
     public string $note;
 
-    /** @var \DateTimeInterface|null gültig von */
-    public ?\DateTimeInterface $validFrom;
+    /** @var \DateTimeImmutable|null gültig von */
+    public ?\DateTimeImmutable $validFrom;
 
-    /** @var \DateTimeInterface|null gültig bis */
-    public ?\DateTimeInterface $validTo;
+    /** @var \DateTimeImmutable|null gültig bis */
+    public ?\DateTimeImmutable $validTo;
 
     /** @var int|null Zeitraum */
     public ?int $timeSpan;

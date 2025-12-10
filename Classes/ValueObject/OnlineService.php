@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Hardanders\ZfinderApiClient\ValueObject;
 
 /**
+ * Onlinedienst.
+ *
+ * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#OnlineService
+ *
  * @todo add remaining properties
- * https://restapi-v4-rp.infodienste.de/doc/index.html#OnlineService
  */
 readonly class OnlineService
 {

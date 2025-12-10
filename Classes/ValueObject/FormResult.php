@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace Hardanders\ZfinderApiClient\ValueObject;
 
+/**
+ * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#FormResult
+ */
 readonly class FormResult
 {
+    /** @var int Wertigkeit des Suchtreffers */
     public int $count;
 
+    /** @var int Gesamtanzahl der Suchtreffer */
     public int $totalCount;
 
     /** @var FormResultEntry[] */
