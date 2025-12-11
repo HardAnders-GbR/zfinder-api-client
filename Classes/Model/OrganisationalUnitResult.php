@@ -14,9 +14,9 @@ readonly class OrganisationalUnitResult
      */
     public array $organisationalUnitResultEntries;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->organisationalUnitResultEntries = array_map(fn (\stdClass $result) => new OrganisationalUnitResultEntry($result), $object->results);
+        $this->organisationalUnitResultEntries = array_map(fn (\stdClass $result) => new OrganisationalUnitResultEntry($result), $data->results);
     }
 
     /**

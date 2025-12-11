@@ -17,9 +17,9 @@ readonly class NamedReference
     /** @var string Bezeichnung */
     public string $name;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->id = $object->id;
-        $this->name = $object->name;
+        $this->id = $data->id;
+        $this->name = $data->name ?? '';
     }
 }

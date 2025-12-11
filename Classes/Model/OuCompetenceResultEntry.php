@@ -14,9 +14,9 @@ readonly class OuCompetenceResultEntry
 
     public OuCompetence $object;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->score = $object->score;
-        $this->object = new OuCompetence($object->object);
+        $this->score = $data->score;
+        $this->object = new OuCompetence($data->object);
     }
 }

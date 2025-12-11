@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace Hardanders\ZfinderApiClient\Model;
 
 /**
- * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#FormResultEntry
+ * @doc https://restapi-v4-rp.infodienste.de/doc/index.html#OnlineServiceGroupResultEntry
  */
-readonly class FormResultEntry
+readonly class OnlineServiceGroupResultEntry
 {
     /** @var float Wertigkeit des Suchtreffers */
     public float $score;
 
-    public Form $form;
+    public OnlineServiceGroup $object;
 
     public function __construct(\stdClass $data)
     {
         $this->score = $data->score;
-        $this->form = new Form($data->object);
+        $this->object = new OnlineServiceGroup($data->object);
     }
 }

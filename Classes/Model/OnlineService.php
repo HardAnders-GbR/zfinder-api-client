@@ -24,16 +24,16 @@ readonly class OnlineService
     /** @var string[] */
     public array $supportedLanguages;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->id = $object->id;
-        $this->name = $object->name;
-        $this->description = $object->description ?? '';
-        $this->link = $object->link;
-        $this->linkTitle = $object->linkTitle ?? '';
-        $this->trustLevel = $object->trustLevel;
-        $this->gdprText = $object->gdprText ?? '';
-        $this->onlinePaymentRequired = $object->onlinePaymentRequired;
-        $this->supportedLanguages = $object->supportedLanguages;
+        $this->id = $data->id;
+        $this->name = $data->name;
+        $this->description = $data->description ?? '';
+        $this->link = $data->link;
+        $this->linkTitle = $data->linkTitle ?? '';
+        $this->trustLevel = $data->trustLevel;
+        $this->gdprText = $data->gdprText ?? '';
+        $this->onlinePaymentRequired = $data->onlinePaymentRequired;
+        $this->supportedLanguages = $data->supportedLanguages;
     }
 }

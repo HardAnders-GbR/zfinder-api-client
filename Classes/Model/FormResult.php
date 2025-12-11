@@ -18,11 +18,11 @@ readonly class FormResult
     /** @var FormResultEntry[] */
     public array $results;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->count = $object->count;
-        $this->totalCount = $object->totalCount;
-        $this->results = array_map(fn (\stdClass $result) => new FormResultEntry($result), $object->results);
+        $this->count = $data->count;
+        $this->totalCount = $data->totalCount;
+        $this->results = array_map(fn (\stdClass $result) => new FormResultEntry($result), $data->results);
     }
 
     /**

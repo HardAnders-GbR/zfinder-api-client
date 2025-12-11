@@ -20,10 +20,10 @@ readonly class TextBlockExternalLink
     /** @var string Bemerkung des Links */
     public string $note;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->url = $object->url;
-        $this->name = $object->name;
-        $this->note = $object->note ?? '';
+        $this->url = $data->url;
+        $this->name = $data->name;
+        $this->note = $data->note ?? '';
     }
 }

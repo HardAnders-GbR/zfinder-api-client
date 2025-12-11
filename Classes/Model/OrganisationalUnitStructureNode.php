@@ -26,13 +26,13 @@ readonly class OrganisationalUnitStructureNode
 
     public \DateTimeImmutable $lastUpdated;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->id = $object->id;
-        $this->name = $object->name ?? '';
-        $this->organisationalUnit = property_exists($object, 'organisationalUnit') ? new NamedReference($object->organisationalUnit) : null;
-        $this->description = $object->description ?? '';
-        $this->children = array_map(fn (\stdClass $child) => new OrganisationalUnitStructureNode($child), $object->children);
-        $this->lastUpdated = new \DateTimeImmutable($object->lastUpdated);
+        $this->id = $data->id;
+        $this->name = $data->name ?? '';
+        $this->organisationalUnit = property_exists($data, 'organisationalUnit') ? new NamedReference($data->organisationalUnit) : null;
+        $this->description = $data->description ?? '';
+        $this->children = array_map(fn (\stdClass $child) => new OrganisationalUnitStructureNode($child), $data->children);
+        $this->lastUpdated = new \DateTimeImmutable($data->lastUpdated);
     }
 }

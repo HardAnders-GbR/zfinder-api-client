@@ -14,9 +14,9 @@ readonly class OnlineServiceResultEntry
 
     public OnlineService $object;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->score = $object->score;
-        $this->object = new OnlineService($object->object);
+        $this->score = $data->score;
+        $this->object = new OnlineService($data->object);
     }
 }

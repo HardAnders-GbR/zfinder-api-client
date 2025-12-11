@@ -22,11 +22,11 @@ readonly class FormLink
     /** @var string|null MIME-Type */
     public ?string $mimeType;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->type = new Type($object->type);
-        $this->url = $object->url;
-        $this->size = $object->size ?? null;
-        $this->mimeType = $object->mimeType ?? null;
+        $this->type = new Type($data->type);
+        $this->url = $data->url;
+        $this->size = $data->size ?? null;
+        $this->mimeType = $data->mimeType ?? null;
     }
 }

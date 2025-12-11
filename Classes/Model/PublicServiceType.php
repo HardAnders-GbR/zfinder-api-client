@@ -74,29 +74,29 @@ readonly class PublicServiceType
 
     public ?NamedReference $department;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->id = $object->id;
-        $this->type = $object->type;
-        $this->leikaKeys = $object->leikaKeys;
-        $this->name = $object->name;
-        $this->teaser = $object->teaser ?? '';
-        $this->textBlocks = array_map(fn (\stdClass $textBlock) => new TextBlock($textBlock), $object->textBlocks);
-        $this->periods = array_map(fn (\stdClass $period) => new Period($period), $object->periods);
-        $this->servicePeriods = array_map(fn (\stdClass $servicePeriod) => new ServicePeriod($servicePeriod), $object->servicePeriods);
-        $this->charges = array_map(fn (\stdClass $charge) => new Charge($charge), $object->charges);
-        $this->documents = array_map(fn (\stdClass $document) => new Document($document), $object->documents);
-        $this->synonyms = $object->synonyms ?? [];
-        $this->lastUpdated = new \DateTimeImmutable($object->lastUpdated);
-        $this->restrictedAreas = array_map(fn (\stdClass $restrictedArea) => new NamedReference($restrictedArea), $object->restrictedAreas);
-        $this->writtenFormRequired = $object->writtenFormRequired ?? null;
-        $this->trustLevel = property_exists($object, 'trustLevel') ? new Type($object->trustLevel) : null;
-        $this->singlePointOfContact = $object->singlePointOfContact;
-        $this->relatedPublicServiceTypes = array_map(fn (\stdClass $relatedPublicServiceType) => new NamedReference($relatedPublicServiceType), $object->relatedPublicServiceTypes);
-        $this->sdgInformationAreas = array_map(fn (\stdClass $sdgInformationArea) => new Type($sdgInformationArea), $object->sdgInformationAreas);
-        $this->receivers = array_map(fn (\stdClass $receiver) => new Type($receiver), $object->receivers);
-        $this->furtherPstObjectsWithActivity = array_map(fn (\stdClass $furtherPstObjectsWithActivity) => new NamedReference($furtherPstObjectsWithActivity), $object->furtherPstObjectsWithActivity);
-        $this->furtherPstObjectsWithActivityAndDetail = array_map(fn (\stdClass $furtherPstObjectsWithActivityAndDetail) => new NamedReference($furtherPstObjectsWithActivityAndDetail), $object->furtherPstObjectsWithActivityAndDetail);
-        $this->department = new NamedReference($object->department);
+        $this->id = $data->id;
+        $this->type = $data->type;
+        $this->leikaKeys = $data->leikaKeys;
+        $this->name = $data->name;
+        $this->teaser = $data->teaser ?? '';
+        $this->textBlocks = array_map(fn (\stdClass $textBlock) => new TextBlock($textBlock), $data->textBlocks);
+        $this->periods = array_map(fn (\stdClass $period) => new Period($period), $data->periods);
+        $this->servicePeriods = array_map(fn (\stdClass $servicePeriod) => new ServicePeriod($servicePeriod), $data->servicePeriods);
+        $this->charges = array_map(fn (\stdClass $charge) => new Charge($charge), $data->charges);
+        $this->documents = array_map(fn (\stdClass $document) => new Document($document), $data->documents);
+        $this->synonyms = $data->synonyms ?? [];
+        $this->lastUpdated = new \DateTimeImmutable($data->lastUpdated);
+        $this->restrictedAreas = array_map(fn (\stdClass $restrictedArea) => new NamedReference($restrictedArea), $data->restrictedAreas);
+        $this->writtenFormRequired = $data->writtenFormRequired ?? null;
+        $this->trustLevel = property_exists($data, 'trustLevel') ? new Type($data->trustLevel) : null;
+        $this->singlePointOfContact = $data->singlePointOfContact;
+        $this->relatedPublicServiceTypes = array_map(fn (\stdClass $relatedPublicServiceType) => new NamedReference($relatedPublicServiceType), $data->relatedPublicServiceTypes);
+        $this->sdgInformationAreas = array_map(fn (\stdClass $sdgInformationArea) => new Type($sdgInformationArea), $data->sdgInformationAreas);
+        $this->receivers = array_map(fn (\stdClass $receiver) => new Type($receiver), $data->receivers);
+        $this->furtherPstObjectsWithActivity = array_map(fn (\stdClass $furtherPstObjectsWithActivity) => new NamedReference($furtherPstObjectsWithActivity), $data->furtherPstObjectsWithActivity);
+        $this->furtherPstObjectsWithActivityAndDetail = array_map(fn (\stdClass $furtherPstObjectsWithActivityAndDetail) => new NamedReference($furtherPstObjectsWithActivityAndDetail), $data->furtherPstObjectsWithActivityAndDetail);
+        $this->department = new NamedReference($data->department);
     }
 }

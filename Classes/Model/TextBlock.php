@@ -22,11 +22,11 @@ readonly class TextBlock
     /** @var SpecialisationText[] Spezialisierungen des Textblockes */
     public array $specialisations;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->type = new Type($object->type);
-        $this->text = $object->text ?? '';
-        $this->externalLinks = array_map(fn (\stdClass $externalLink) => new TextBlockExternalLink($externalLink), $object->externalLinks ?? []);
-        $this->specialisations = array_map(fn (\stdClass $specialisationText) => new SpecialisationText($specialisationText), $object->specialisations ?? []);
+        $this->type = new Type($data->type);
+        $this->text = $data->text ?? '';
+        $this->externalLinks = array_map(fn (\stdClass $externalLink) => new TextBlockExternalLink($externalLink), $data->externalLinks ?? []);
+        $this->specialisations = array_map(fn (\stdClass $specialisationText) => new SpecialisationText($specialisationText), $data->specialisations ?? []);
     }
 }

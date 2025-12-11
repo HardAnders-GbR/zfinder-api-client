@@ -18,11 +18,11 @@ readonly class OuCompetenceResult
     /** @var OuCompetenceResultEntry[] */
     public array $results;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->count = $object->count;
-        $this->totalCount = $object->totalCount;
-        $this->results = array_map(fn (\stdClass $result) => new OuCompetenceResultEntry($result), $object->results);
+        $this->count = $data->count;
+        $this->totalCount = $data->totalCount;
+        $this->results = array_map(fn (\stdClass $result) => new OuCompetenceResultEntry($result), $data->results);
     }
 
     /**

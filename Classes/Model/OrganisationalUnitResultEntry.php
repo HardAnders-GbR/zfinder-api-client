@@ -14,9 +14,9 @@ readonly class OrganisationalUnitResultEntry
 
     public OrganisationalUnit $organisationalUnit;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->score = $object->score;
-        $this->organisationalUnit = new OrganisationalUnit($object->object);
+        $this->score = $data->score;
+        $this->organisationalUnit = new OrganisationalUnit($data->object);
     }
 }

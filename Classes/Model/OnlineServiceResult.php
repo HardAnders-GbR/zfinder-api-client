@@ -20,11 +20,11 @@ readonly class OnlineServiceResult
      */
     public array $results;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->count = $object->count;
-        $this->totalCount = $object->totalCount ?? 0;
-        $this->results = array_map(fn (\stdClass $result) => new OnlineServiceResultEntry($result), $object->results);
+        $this->count = $data->count;
+        $this->totalCount = $data->totalCount ?? 0;
+        $this->results = array_map(fn (\stdClass $result) => new OnlineServiceResultEntry($result), $data->results);
     }
 
     /**

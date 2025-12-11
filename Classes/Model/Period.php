@@ -47,19 +47,19 @@ readonly class Period
     /** @var string Wiederholung des Datumsbereiches, gefüllt wenn Typ SPAN, SPANINTERVAL */
     public string $PeriodRepetition;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->type = $object->type;
-        $this->restrictedArea = $object->restrictedArea ?? '';
-        $this->name = $object->name;
-        $this->note = $object->note ?? '';
-        $this->validFrom = property_exists($object, 'validFrom') ? new \DateTimeImmutable($object->validFrom) : null;
-        $this->validTo = property_exists($object, 'validTo') ? new \DateTimeImmutable($object->validTo) : null;
-        $this->timeSpan = $object->timeSpan;
-        $this->timeSpanTo = $object->timeSpanTo ?? null;
-        $this->periodUnit = $object->periodUnit;
-        $this->dateFrom = property_exists($object, 'dateFrom') ? new \DateTimeImmutable($object->dateFrom) : null;
-        $this->dateTo = property_exists($object, 'dateTo') ? new \DateTimeImmutable($object->dateTo) : null;
-        $this->PeriodRepetition = $object->PeriodRepetition ?? '';
+        $this->type = $data->type;
+        $this->restrictedArea = $data->restrictedArea ?? '';
+        $this->name = $data->name;
+        $this->note = $data->note ?? '';
+        $this->validFrom = property_exists($data, 'validFrom') ? new \DateTimeImmutable($data->validFrom) : null;
+        $this->validTo = property_exists($data, 'validTo') ? new \DateTimeImmutable($data->validTo) : null;
+        $this->timeSpan = $data->timeSpan;
+        $this->timeSpanTo = $data->timeSpanTo ?? null;
+        $this->periodUnit = $data->periodUnit;
+        $this->dateFrom = property_exists($data, 'dateFrom') ? new \DateTimeImmutable($data->dateFrom) : null;
+        $this->dateTo = property_exists($data, 'dateTo') ? new \DateTimeImmutable($data->dateTo) : null;
+        $this->PeriodRepetition = $data->PeriodRepetition ?? '';
     }
 }

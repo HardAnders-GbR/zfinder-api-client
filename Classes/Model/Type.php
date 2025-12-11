@@ -26,12 +26,12 @@ readonly class Type
     /** @var bool|null öffentlich nicht sichtbarer Typ */
     public ?bool $notPublic;
 
-    public function __construct(\stdClass $object)
+    public function __construct(\stdClass $data)
     {
-        $this->id = $object->id ?? '';
-        $this->name = $object->name;
-        $this->description = $object->description ?? '';
-        $this->key = $object->key;
-        $this->notPublic = $object->notPublic ?? null;
+        $this->id = $data->id ?? '';
+        $this->name = $data->name;
+        $this->description = $data->description ?? '';
+        $this->key = $data->key;
+        $this->notPublic = $data->notPublic ?? null;
     }
 }
