@@ -97,6 +97,6 @@ readonly class PublicServiceType
         $this->receivers = array_map(fn (\stdClass $receiver) => new Type($receiver), $data->receivers);
         $this->furtherPstObjectsWithActivity = array_map(fn (\stdClass $furtherPstObjectsWithActivity) => new NamedReference($furtherPstObjectsWithActivity), $data->furtherPstObjectsWithActivity);
         $this->furtherPstObjectsWithActivityAndDetail = array_map(fn (\stdClass $furtherPstObjectsWithActivityAndDetail) => new NamedReference($furtherPstObjectsWithActivityAndDetail), $data->furtherPstObjectsWithActivityAndDetail);
-        $this->department = new NamedReference($data->department);
+        $this->department = property_exists($data, 'department') ? new NamedReference($data->department) : null;
     }
 }

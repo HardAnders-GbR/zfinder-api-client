@@ -88,7 +88,7 @@ readonly class OrganisationalUnit
     {
         $this->id = $data->id;
         $this->name = $data->name;
-        $this->optionalName = $data->optionalName;
+        $this->optionalName = $data->optionalName ?? '';
         $this->synonyms = $data->synonyms;
         $this->description = $data->description ?? '';
         $this->shortDescription = $data->shortDescription ?? '';

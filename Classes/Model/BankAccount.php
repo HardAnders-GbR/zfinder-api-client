@@ -35,9 +35,9 @@ readonly class BankAccount
     public function __construct(\stdClass $data)
     {
         $this->payeeName = $data->payeeName;
-        $this->bank = $data->bank;
-        $this->IBAN = $data->IBAN;
-        $this->BIC = $data->BIC;
+        $this->bank = $data->bank ?? '';
+        $this->IBAN = $data->IBAN ?? '';
+        $this->BIC = $data->BIC ?? '';
         $this->publicVisible = $data->publicVisible;
         $this->publicServiceTypes = array_map(fn (\stdClass $publicServiceType) => new NamedReference($publicServiceType), $data->publicServiceTypes);
         $this->notes = $data->notes ?? '';

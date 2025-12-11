@@ -22,7 +22,7 @@ readonly class OuCompetenceResult
     {
         $this->count = $data->count;
         $this->totalCount = $data->totalCount;
-        $this->results = array_map(fn (\stdClass $result) => new OuCompetenceResultEntry($result), $data->results);
+        $this->results = array_map(fn (\stdClass $result) => new OuCompetenceResultEntry($result), $data->results ?? []);
     }
 
     /**

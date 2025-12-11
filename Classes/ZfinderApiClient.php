@@ -35,8 +35,8 @@ class ZfinderApiClient
     private array $additionalHeaders;
 
     public function __construct(
-        private readonly string $baseUrl,
-        string $apiKey,
+        public string $baseUrl,
+        public string $apiKey,
     ) {
         $this->client = HttpClient::create();
 
@@ -74,7 +74,7 @@ class ZfinderApiClient
      *
      * GET /ouCompetence/{id}
      */
-    public function ouCompetenceIdGet(OuCompetenceIdGetRequest $request): ?OuCompetenceResult
+    public function ouCompetenceIdGet(OuCompetenceIdGetRequest $request): OuCompetenceResult
     {
         $resource = sprintf('ouCompetence/%s', $request->id);
         $endpoint = sprintf('%s%s', $this->baseUrl, $resource);
@@ -302,6 +302,7 @@ class ZfinderApiClient
 
     /**
      * @param array<string, mixed> $queryParams
+     * @throws \Exception
      */
     private function request(
         string $url,
@@ -316,7 +317,7 @@ class ZfinderApiClient
         ]);
 
         if (200 !== $response->getStatusCode()) {
-            return null;
+            throw new \Exception($response->getContent());
         }
 
         return json_decode($response->getContent(), false);

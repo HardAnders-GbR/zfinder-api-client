@@ -16,8 +16,8 @@ readonly class ParkingLot
 
     public Type $type;
 
-    /** @var int Anzahl */
-    public int $count;
+    /** @var int|null Anzahl */
+    public ?int $count;
 
     /** @var bool Kostenpflichtig */
     public bool $feeApply;
@@ -26,7 +26,7 @@ readonly class ParkingLot
     {
         $this->name = $data->name;
         $this->type = new Type($data->type);
-        $this->count = $data->count;
+        $this->count = $data->count ?? null;
         $this->feeApply = $data->feeApply;
     }
 }

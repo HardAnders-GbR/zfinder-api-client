@@ -21,11 +21,17 @@
         "php-cs-fixer/shim": "^3.75",
         "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^11.5",
         "symfony/debug": "^4.4"
     },
     "autoload": {
         "psr-4": {
             "Hardanders\\ZfinderApiClient\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "config": {
