@@ -61,7 +61,7 @@ class ZfinderApiClient
 
         $response = $this->request(
             $endpoint,
-            ['selectAttributes' => $request->selectAttributes],
+            $request->getQueryParams(),
         );
 
         return new OrganisationalUnit($response);
@@ -302,6 +302,7 @@ class ZfinderApiClient
 
     /**
      * @param array<string, mixed> $queryParams
+     *
      * @throws \Exception
      */
     private function request(
@@ -317,7 +318,7 @@ class ZfinderApiClient
         ]);
 
         if (200 !== $response->getStatusCode()) {
-            throw new \Exception($response->getContent());
+            return new \stdClass();
         }
 
         return json_decode($response->getContent(), false);

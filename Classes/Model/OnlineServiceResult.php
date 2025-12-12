@@ -22,9 +22,9 @@ readonly class OnlineServiceResult
 
     public function __construct(\stdClass $data)
     {
-        $this->count = $data->count;
+        $this->count = $data->count ?? 0;
         $this->totalCount = $data->totalCount ?? 0;
-        $this->results = array_map(fn (\stdClass $result) => new OnlineServiceResultEntry($result), $data->results);
+        $this->results = array_map(fn (\stdClass $result) => new OnlineServiceResultEntry($result), $data->results ?? []);
     }
 
     /**

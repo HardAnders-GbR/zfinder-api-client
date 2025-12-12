@@ -15,4 +15,14 @@ class OuIdGetRequest
         public array $selectAttributes = [],
     ) {
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getQueryParams(): array
+    {
+        return array_filter([
+            'selectAttributes' => $this->selectAttributes,
+        ]);
+    }
 }
