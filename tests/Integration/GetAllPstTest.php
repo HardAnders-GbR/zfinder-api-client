@@ -36,7 +36,7 @@ class GetAllPstTest extends TestCase
             $organizationId = $organization->id;
             $ouCompetenceResult = $apiClient->ouCompetenceIdGet(new OuCompetenceIdGetRequest($organizationId));
 
-            if ($ouCompetenceResult === null) {
+            if (null === $ouCompetenceResult) {
                 continue;
             }
 
@@ -44,19 +44,19 @@ class GetAllPstTest extends TestCase
                 foreach ($competence->publicServiceTypes as $publicServiceTypes) {
                     $service = $apiClient->pstIdGet(new PstIdGetRequest($publicServiceTypes->id, $areaId));
 
-                    if ($service === null) {
+                    if (null === $service) {
                         continue;
                     }
 
                     $this->assertInstanceOf(PublicServiceType::class, $service);
 
-                    $return[(string)$service->id] = [
+                    $return[(string) $service->id] = [
                         'service' => $service,
                         'forms' => [],
                         'onlineServices' => [],
                     ];
 
-                    if ($areaId !== null) {
+                    if (null !== $areaId) {
                         $forms = $apiClient->formFindGet(new FormFindGetRequest(
                             pstId: $service->id,
                             ouId: $organizationId,
@@ -64,14 +64,14 @@ class GetAllPstTest extends TestCase
                             areaId: $areaId,
                         ))->getForms();
 
-                        $return[(string)$service->id]['forms'] = $forms;
+                        $return[(string) $service->id]['forms'] = $forms;
                     }
 
                     $onlineServicesResult = $apiClient->osFindByCompetenceGet(new OsFindByCompetenceGetRequest($service->id, $areaId));
 
-                    if ($onlineServicesResult !== null) {
+                    if (null !== $onlineServicesResult) {
                         $onlineServices = $onlineServicesResult->getOnlineServices();
-                        $return[(string)$service->id]['onlineServices'] = $onlineServices;
+                        $return[(string) $service->id]['onlineServices'] = $onlineServices;
                     }
                 }
             }
@@ -123,13 +123,13 @@ class GetAllPstTest extends TestCase
     {
         $response = $this->apiClient->ouCompetenceIdGet(new OuCompetenceIdGetRequest($ouId));
 
-        if ($response->getOuCompetences() === []) {
+        if ([] === $response->getOuCompetences()) {
             return null;
         }
 
         $areas = $response->getOuCompetences()[0]->areas;
 
-        if ($areas === []) {
+        if ([] === $areas) {
             return null;
         }
 
