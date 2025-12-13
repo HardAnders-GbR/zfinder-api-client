@@ -25,8 +25,8 @@ readonly class SpecialisationText
 
     public function __construct(\stdClass $data)
     {
-        $this->restrictedArea = $data->restrictedArea;
-        $this->text = $data->text;
+        $this->restrictedArea = $data->restrictedArea ?? '';
+        $this->text = $data->text ?? '';
         $this->externalLinks = array_map(fn (\stdClass $externalLink) => new TextBlockExternalLink($externalLink), $data->externalLinks ?? []);
         $this->legalNorms = array_map(fn (\stdClass $legalNorm) => new TextBlockAdditions($legalNorm), $data->legalNorms);
     }
