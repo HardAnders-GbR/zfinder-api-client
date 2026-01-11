@@ -22,7 +22,7 @@ readonly class CommunicationSystem
     public function __construct(\stdClass $data)
     {
         $this->identification = $data->identification;
-        $this->identificationAddon = $data->identificationAddon;
+        $this->identificationAddon = $data->identificationAddon ?? '';
         $this->type = new Type($data->type);
     }
 }
