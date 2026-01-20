@@ -27,6 +27,6 @@ readonly class ParkingLot
         $this->name = $data->name;
         $this->type = new Type($data->type);
         $this->count = $data->count ?? null;
-        $this->feeApply = $data->feeApply;
+        $this->feeApply = $data->feeApply ?? false;
     }
 }
