@@ -45,7 +45,12 @@
     "scripts": {
         "ci:test": [
             "@ci:php:stan",
-            "@ci:php:cs-fixer"
+            "@ci:php:cs-fixer",
+            "@ci:phpunit"
+        ],
+        "ci:phpunit": [
+            "phpunit tests/Endpoints",
+            "phpunit tests/Integration"
         ],
         "ci:fix": [
             "@ci:php:cs-fixer:fix"

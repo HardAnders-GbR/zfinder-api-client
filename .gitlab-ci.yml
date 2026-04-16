@@ -1,0 +1,11 @@
+image: webdevops/php-nginx:8.2
+
+stages:
+    - test
+
+testing:
+    stage: test
+    script:
+        - composer config --auth gitlab-token.gitlab.com "$GITLAB_TOKEN" --no-ansi --no-interaction
+        - composer install --no-progress --no-ansi --no-interaction --optimize-autoloader
+        - composer ci:test
