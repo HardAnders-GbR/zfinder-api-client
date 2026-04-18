@@ -55,9 +55,9 @@ readonly class Period
         $this->note = $data->note ?? '';
         $this->validFrom = property_exists($data, 'validFrom') ? new \DateTimeImmutable($data->validFrom) : null;
         $this->validTo = property_exists($data, 'validTo') ? new \DateTimeImmutable($data->validTo) : null;
-        $this->timeSpan = $data->timeSpan;
+        $this->timeSpan = $data->timeSpan ?? null;
         $this->timeSpanTo = $data->timeSpanTo ?? null;
-        $this->periodUnit = $data->periodUnit;
+        $this->periodUnit = $data->periodUnit ?? '';
         $this->dateFrom = property_exists($data, 'dateFrom') ? new \DateTimeImmutable($data->dateFrom) : null;
         $this->dateTo = property_exists($data, 'dateTo') ? new \DateTimeImmutable($data->dateTo) : null;
         $this->PeriodRepetition = $data->PeriodRepetition ?? '';
